@@ -33,10 +33,11 @@ public class MyThread extends Thread {
     public void run() {
         // логика отрисовки
         Canvas canvas;
+        int i = 0;
         while(flag) {
             long currentTime = getTime();
             long elapsedTime = currentTime - lastTime;
-            if(elapsedTime < 1000) {
+            if(elapsedTime < 100) {
                 continue;
             }
             // блокировка Canvas чтобы на ней нарисовать
@@ -47,8 +48,12 @@ public class MyThread extends Thread {
                     (int) (255*Math.random()),
                     (int) (255*Math.random()),
                     (int) (255*Math.random())));
-            canvas.drawCircle(canvas.getWidth()/2,canvas.getHeight()/2,
-                    (float)(300*Math.random()),paint);
+            if (i > canvas.getWidth()){
+                i = 0;
+            }
+            canvas.drawCircle(i,canvas.getHeight()/2,
+                    (float)(50),paint);
+            i += 20;
             // разблокируем и показываем
             holder.unlockCanvasAndPost(canvas);
             lastTime = getTime();

@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -11,9 +12,11 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
 
     private MyThread myThread;
 
+
     public MySurfaceView(Context context) {
         super(context);
         getHolder().addCallback(this);
+
     }
 
     @Override
